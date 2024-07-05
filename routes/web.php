@@ -21,11 +21,16 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+//admin related routes
+
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/events', [EventConroller::class, 'events'])->name('add.events');
     Route::get('/events/create', [EventConroller::class, 'create_events'])->name('create.events');
     Route::post('/store_events', [EventConroller::class, 'store_events'])->name('store.events');
+    Route::get('/edit_events/{event}', [EventConroller::class, 'update_events'])->name('update.created.events');
+    Route::put('/edit_events/{event}', [EventConroller::class, 'actual_update_events'])->name('actual.update.created.events');
+    Route::get('/delete_events/{event}', [EventConroller::class, 'delete_events'])->name('delete.created.events');
 
 }
 );

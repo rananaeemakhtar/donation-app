@@ -28,7 +28,7 @@ class EventConroller extends Controller
             'date'=> $validated['date'],
             'start_time' => $validated['start_time'],
             'end_time' => $validated['end_time'],
-            'zoom_ID' => $validated['zoom_ID'],
+            'zoom_id' => $validated['zoom_ID'],
             'phone_number' => $validated['phone_no'],
             'website' => $validated['website'],
             'organizer_name' => $validated['organizer_name'],
@@ -44,5 +44,36 @@ class EventConroller extends Controller
         return redirect()->back()->with('error','Unabale to create Event');
    }
         }
+
+
+        public function update_events(Event $event) {
+                return view('admin.events.edit', ['update_event'=> $event]);
+        }
+
+        public function actual_update_events(Event $event, Request $request) {
+            $validator =  $request->validate([
+            'tittle' => ['required', 'string'],
+            'date' => ['required', 'date'],
+            'start_time' => ['required'],
+            'end_time' => ['required'],
+            'zoom_ID' => ['required'],
+            'phone_no' => ['required'],
+            'website' => ['required'],
+            'organizer_name' => ['required'], 
+            ]);
+
+            $event->update($validator);
+
+                return redirect()->route('add.events');
+        }
+        
+        public function delete_events(Event $event) {
+
+                $event->delete();
+
+                return redirect()->back();
+
+        }
+
 
 }
