@@ -1,18 +1,19 @@
 @extends('layouts.admin')
+
 @section('content')
     <div class="pagetitle">
-        <section class="sign-up">
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-            <h1>Create Events</h1>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <h1>Create Events</h1>
     </div><!-- End Page Title -->
+
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
@@ -21,41 +22,53 @@
                     <div class="card-body">
 
                         <!-- Multi Columns Form -->
-                        <form class="row g-3 m-auto" action="{{ route('store.events') }}" method="post">
+                        <form class="row g-3 m-auto" action="{{ route('events.store') }}" method="post">
                             @csrf
-                            <div class="col-md-12">
+                            <div class="col-sm-12 col-md-6">
                                 <label for="inputName5" class="form-label">Title</label>
-                                <input type="text" class="form-control" id="inputName5" name="tittle"
-                                    value="{{ old('tittle') }}">
-                                @if ($errors->has('tittle'))
-                                    <span class="text-danger">{{ $errors->first('tittle') }}</span>
+                                <input type="text" class="form-control" id="inputName5" name="title"
+                                    value="{{ old('title') }}">
+                                @if ($errors->has('title'))
+                                    <span class="text-danger">{{ $errors->first('title') }}</span>
                                 @endif
                             </div>
-                            <div class="col-md-6">
-                                <label for="inputEmail5" class="form-label">Date</label>
-                                <input type="date" class="form-control" id="inputEmail5" name="date"
-                                    value="{{ old('date') }}">
-                                @if ($errors->has('date'))
-                                    <span class="text-danger">{{ $errors->first('date') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputPassword5" class="form-label">Start time</label>
-                                <input type="time" class="form-control" id="inputPassword5" name="start_time"
-                                    value="{{ old('start_time') }}">
-                                @if ($errors->has('start_time'))
-                                    <span class="text-danger">{{ $errors->first('start_time') }}</span>
+                            <div class="col-sm-12 col-md-6">
+                                <label for="inputZip" class="form-label">Organizer Name</label>
+                                <input type="text" class="form-control" id="inputZip" name="organizer_name"
+                                    value="{{ old('organizer_name') }}">
+                                @if ($errors->has('organizer_name'))
+                                    <span class="text-danger">{{ $errors->first('organizer_name') }}</span>
                                 @endif
                             </div>
                             <div class="col-12">
-                                <label for="inputAddress5" class="form-label">End time</label>
-                                <input type="time" class="form-control" id="inputAddres5s" placeholder="22-10-1997"
-                                    name="end_time" value="{{ old('end_time') }}">
-                                @if ($errors->has('end_time'))
-                                    <span class="text-danger">{{ $errors->first('end_time') }}</span>
-                                @endif
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4 col-lg-4">
+                                        <label for="inputEmail5" class="form-label">Date</label>
+                                        <input type="date" class="form-control" id="inputEmail5" name="date"
+                                            value="{{ old('date') }}">
+                                        @if ($errors->has('date'))
+                                            <span class="text-danger">{{ $errors->first('date') }}</span>
+                                        @endif
+                                    </div>
+                                    <div class="col-sm-12 col-md-4 col-lg-4">
+                                        <label for="inputPassword5" class="form-label">Start time</label>
+                                        <input type="time" class="form-control" id="inputPassword5" name="start_time"
+                                            value="{{ old('start_time') }}">
+                                        @if ($errors->has('start_time'))
+                                            <span class="text-danger">{{ $errors->first('start_time') }}</span>
+                                        @endif
+                                    </div>
+                                    <div class="col-sm-12 col-md-4 col-lg-4">
+                                        <label for="inputAddress5" class="form-label">End time</label>
+                                        <input type="time" class="form-control" id="inputAddres5s" placeholder="22-10-1997"
+                                            name="end_time" value="{{ old('end_time') }}">
+                                        @if ($errors->has('end_time'))
+                                            <span class="text-danger">{{ $errors->first('end_time') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-sm-12 col-md-6">
                                 <label for="inputAddress2" class="form-label">Zoom ID</label>
                                 <input type="text" class="form-control" id="inputAddress2" placeholder="00000000"
                                     name="zoom_ID" value="{{ old('zoom_ID') }}">
@@ -71,20 +84,12 @@
                                     <span class="text-danger">{{ $errors->first('phone_no') }}</span>
                                 @endif
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-12">
                                 <label for="inputState" class="form-label">Website</label>
                                 <input type="website" class="form-control" id="inputCity" name="website"
                                     value="{{ old('website') }}">
                                 @if ($errors->has('website'))
                                     <span class="text-danger">{{ $errors->first('website') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-md-2">
-                                <label for="inputZip" class="form-label">Organizer Name</label>
-                                <input type="text" class="form-control" id="inputZip" name="organizer_name"
-                                    value="{{ old('organizer_name') }}">
-                                @if ($errors->has('organizer_name'))
-                                    <span class="text-danger">{{ $errors->first('organizer_name') }}</span>
                                 @endif
                             </div>
                             <div class="text-center">

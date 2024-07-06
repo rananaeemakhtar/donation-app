@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="pagetitle">
-        <div class="d-flex justify-content-between">
-            <h1 class="mb-5">Data Tables</h1>
-            <a class="btn btn-primary m-4" href="{{ route('create.events') }}"> Create Events </a>
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>Events</h1>
+            <a class="btn btn-primary m-4" href="{{ route('events.create') }}"> Create Event </a>
         </div>
 
         <section class="section">
@@ -18,9 +18,7 @@
                             <table class="table datatable">
                                 <thead>
                                     <tr>
-                                        <th>
-                                            <b>T</b>ittle
-                                        </th>
+                                        <th> Title </th>
                                         <th data-type="date" data-format="YYYY/DD/MM">Date</th>
                                         <th data-type="time">Start Time</th>
                                         <th data-type="time">End Time</th>
@@ -34,7 +32,7 @@
                                 <tbody>
                                     @foreach ($events as $event)
                                         <tr>
-                                            <td>{{ $event->tittle }}</td>
+                                            <td>{{ $event->title }}</td>
                                             <td>{{ $event->date }}</td>
                                             <td>{{ $event->start_time }}</td>
                                             <td>{{ $event->end_time }}</td>
@@ -43,10 +41,10 @@
                                             <td>{{ $event->zoom_id }}</td>
                                             <td>{{ $event->organizer_name }}</td>
                                             <td>
-                                                <a href="{{ route('update.created.events', $event->id) }}"><i
+                                                <a href="{{ route('events.edit', $event->id) }}"><i
                                                         class="fa fa-pencil cursor-pointer text-success"></i></a>
                                                 |
-                                                <a href="{{ route('delete.created.events', $event->id) }}"><i
+                                                <a href="{{ route('events.delete', $event->id) }}"><i
                                                         class="fa fa-trash cursor-pointer text-danger"></i></a>
                                             </td>
                                         </tr>

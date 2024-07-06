@@ -5,33 +5,33 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EventConroller;
 
+use App\Http\Middleware\AdminMiddleware;
+
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('admin.index'));
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__.'/auth.php';
 
 //admin related routes
-
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('/events', [EventConroller::class, 'events'])->name('add.events');
-    Route::get('/events/create', [EventConroller::class, 'create_events'])->name('create.events');
-    Route::post('/store_events', [EventConroller::class, 'store_events'])->name('store.events');
-    Route::get('/edit_events/{event}', [EventConroller::class, 'update_events'])->name('update.created.events');
-    Route::put('/edit_events/{event}', [EventConroller::class, 'actual_update_events'])->name('actual.update.created.events');
-    Route::get('/delete_events/{event}', [EventConroller::class, 'delete_events'])->name('delete.created.events');
-
-}
-);
+    
+    Route::get('/events', [EventConroller::class, 'index'])->name('events.index');
+    Route::get('/events/create', [EventConroller::class, 'create'])->name('events.create');
+    Route::post('/store', [EventConroller::class, 'store'])->name('events.store');
+    Route::get('/events/{event}', [EventConroller::class, 'edit'])->name('events.edit');
+    Route::put('/events/{event}', [EventConroller::class, 'update'])->name('events.update');
+    Route::delete('/events/{event}', [EventConroller::class, 'delete'])->name('events.delete');
+});
 

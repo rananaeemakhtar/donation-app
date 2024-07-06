@@ -289,7 +289,7 @@
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('add.events') }}">
+                <a class="nav-link collapsed" href="{{ route('events.index') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Events</span>
                 </a>
