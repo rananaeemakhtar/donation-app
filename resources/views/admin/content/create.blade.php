@@ -34,6 +34,13 @@
                                 @endif
                             </div>
                             <div class="col-sm-12">
+                                <label for="inputZip" class="form-label">Title</label>
+                                <input type="text" name="title" class="form-control" value="{{ old('title') }}" />
+                                @if ($errors->has('title'))
+                                    <span class="text-danger">{{ $errors->first('title') }}</span>
+                                @endif
+                            </div>
+                            <div class="col-sm-12">
                                 <label for="inputZip" class="form-label">Content</label>
                                 <textarea name="content" id="content" cols="30" rows="10" class="form-control"></textarea>
                                 @if ($errors->has('content'))

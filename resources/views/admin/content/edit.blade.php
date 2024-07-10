@@ -30,11 +30,18 @@
                                 <span class="text-danger">{{ $errors->first('section') }}</span>
                             @endif
                         </div>
+                        <div class="col-sm-12">
+                                <label for="inputZip" class="form-label">Title</label>
+                                <input type="text" name="title" class="form-control" value="{{ old('title', $content->title) }}" />
+                                @if ($errors->has('title'))
+                                    <span class="text-danger">{{ $errors->first('title') }}</span>
+                                @endif
+                            </div>
                         <div class="col-sm-12 col-md-6">
                             <label for="content" class="form-label">Content</label>
                             <textarea name="content" id="content" cols="30" rows="10" class="form-control">{{ old('content', $content->content) }}</textarea>
                             @if ($errors->has('organizer_name'))
-                            <span class="text-danger">{{ $errors->first('organizer_name') }}</span>
+                                <span class="text-danger">{{ $errors->first('organizer_name') }}</span>
                             @endif
                         </div>
                         <div class="text-center">

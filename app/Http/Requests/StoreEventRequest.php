@@ -26,10 +26,11 @@ class StoreEventRequest extends FormRequest
             'date' => ['required', 'date'],
             'start_time' => ['required'],
             'end_time' => ['required'],
-            'zoom_ID' => ['required'],
-            'phone_no' => ['required'],
+            'zoom_id' => ['required'],
+            'phone_number' => ['required'],
             'website' => ['required'],
             'organizer_name' => ['required'],
+            'audio' => 'required|mimes:application/octet-stream,audio/mpeg,mpga,mp3,wav',
         ];
     }
 }

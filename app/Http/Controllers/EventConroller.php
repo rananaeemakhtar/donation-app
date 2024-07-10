@@ -26,6 +26,13 @@ class EventConroller extends Controller
         {
                 $validated = $request->validated();
 
+                $fileName = time() . '.' . $request->audio->getClientOriginalExtension();
+                $path = 'public/audio/' . $fileName;
+
+                // Store the uploaded audio file (replace with actual S3 logic later)
+                $path = $request->audio->storeAs($path, $fileName);
+                $validated['audio'] = str_replace('public', 'storage', $path);
+
                 $event = Event::create($validated);
 
                 if ($event->save()) {
@@ -54,7 +61,7 @@ class EventConroller extends Controller
                         'organizer_name' => ['required'],
                 ]);
 
-                $event->update($request->validated());
+                $event->update($request->all());
 
                 return redirect()->route('events.index');
         }

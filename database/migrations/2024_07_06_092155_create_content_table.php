@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('content', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->nullable();
             $table->string('section');
-            $table->string('content');
+            $table->text('content');
             $table->timestamps();
         });
     }

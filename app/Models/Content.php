@@ -12,6 +12,7 @@ class Content extends Model
     protected $table = 'content';
 
     protected $fillable = [
+        'title',
         'section',
         'content',
     ];

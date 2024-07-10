@@ -25,13 +25,17 @@ class ContentController extends Controller
         $request->validate([
             'section' =>'required',
             'content' =>'required',
+            'title'   =>   'nullable'
         ]);
 
         $data = [
             'section' => $request->section,
             'content' => $request->content,
+            'title' => 'nullable',
         ];
+
         $content = Content::where('section', $request->section)->first();
+        
         if($content){
             $content->update($data);
         }else{
@@ -51,11 +55,13 @@ class ContentController extends Controller
         $request->validate([
             'section' =>'required',
             'content' =>'required',
+            'title' => 'nullable',
         ]);
 
         $data = [
             'section' => $request->section,
             'content' => $request->content,
+            'title' => $request->title,
         ];
 
         $content->update($data);

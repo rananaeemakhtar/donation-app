@@ -22,7 +22,7 @@
                     <div class="card-body">
 
                         <!-- Multi Columns Form -->
-                        <form class="row g-3 m-auto" action="{{ route('events.store') }}" method="post">
+                        <form class="row g-3 m-auto" action="{{ route('events.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="col-sm-12 col-md-6">
                                 <label for="inputName5" class="form-label">Title</label>
@@ -71,17 +71,17 @@
                             <div class="col-sm-12 col-md-6">
                                 <label for="inputAddress2" class="form-label">Zoom ID</label>
                                 <input type="text" class="form-control" id="inputAddress2" placeholder="00000000"
-                                    name="zoom_ID" value="{{ old('zoom_ID') }}">
-                                @if ($errors->has('zoom_ID'))
-                                    <span class="text-danger">{{ $errors->first('zoom_ID') }}</span>
+                                    name="zoom_id" value="{{ old('zoom_id') }}">
+                                @if ($errors->has('zoom_id'))
+                                    <span class="text-danger">{{ $errors->first('zoom_id') }}</span>
                                 @endif
                             </div>
                             <div class="col-md-6">
                                 <label for="inputCity" class="form-label">Phone number</label>
-                                <input type="text" class="form-control" id="inputCity" name="phone_no"
-                                    value="{{ old('phone_no') }}">
-                                @if ($errors->has('phone_no'))
-                                    <span class="text-danger">{{ $errors->first('phone_no') }}</span>
+                                <input type="text" class="form-control" id="inputCity" name="phone_number"
+                                    value="{{ old('phone_number') }}">
+                                @if ($errors->has('phone_number'))
+                                    <span class="text-danger">{{ $errors->first('phone_number') }}</span>
                                 @endif
                             </div>
                             <div class="col-md-12">
@@ -92,8 +92,12 @@
                                     <span class="text-danger">{{ $errors->first('website') }}</span>
                                 @endif
                             </div>
+                            <div class="col-12">
+                                <label for="audio" class="form-label">Audio Recording</label>
+                                <input class="form-control" type="file" id="audio" name="audio">
+                            </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Store</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
                                 <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
                         </form><!-- End Multi Columns Form -->

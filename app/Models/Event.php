@@ -18,5 +18,6 @@ class Event extends Model
         'phone_number',
         'website',
         'organizer_name',
+        'audio',
     ];
 }
