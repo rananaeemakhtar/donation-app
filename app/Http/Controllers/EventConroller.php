@@ -27,7 +27,7 @@ class EventConroller extends Controller
                 $validated = $request->validated();
 
                 $fileName = time() . '.' . $request->audio->getClientOriginalExtension();
-                $path = 'public/audio/' . $fileName;
+                $path = 'public/audio.';
 
                 // Store the uploaded audio file (replace with actual S3 logic later)
                 $path = $request->audio->storeAs($path, $fileName);
@@ -59,9 +59,25 @@ class EventConroller extends Controller
                         'phone_no' => ['required'],
                         'website' => ['required'],
                         'organizer_name' => ['required'],
+                        'audio' => 'mimes:application/octet-stream,audio/mpeg,mpga,mp3,wav',
+                        'description' => ['required'],
                 ]);
 
-                $event->update($request->all());
+                $data = $request->all();
+
+                if($request->hasFile('audio')) {
+                
+                        $fileName = time() . '.' . $request->audio->getClientOriginalExtension();
+                        $path = 'public/audio';
+        
+                        // Store the uploaded audio file (replace with actual S3 logic later)
+                        $path = $request->audio->storeAs($path, $fileName);
+                        $data['audio'] = str_replace('public', 'storage', $path);
+        
+                        
+                }
+
+                $event->update($data);
 
                 return redirect()->route('events.index');
         }

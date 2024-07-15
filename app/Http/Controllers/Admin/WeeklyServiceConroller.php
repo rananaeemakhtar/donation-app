@@ -25,6 +25,11 @@ class WeeklyServiceConroller extends Controller
     {
         $data = $request->validated();
 
+        if($request->hasFile('image')) {
+            $path = $request->image->store('public/images');
+            $data['image'] = str_replace('public', 'storage', $path);
+        }
+        
         WeeklyService::create($data);
 
         return redirect(route('weekly_services.index'))->with('message', 'Service created successfully');
@@ -43,6 +48,11 @@ class WeeklyServiceConroller extends Controller
     public function update(StoreWeeklyServiceRequest $request, WeeklyService $service)
     {
         $data = $request->validated();
+
+        if($request->hasFile('image')) {
+            $path = $request->image->store('public/images');
+            $data['image'] = str_replace('public', 'storage', $path);
+        }
         
         $service->update($data);
 

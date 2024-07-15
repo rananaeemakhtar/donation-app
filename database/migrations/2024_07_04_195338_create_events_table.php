@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('website');
             $table->string('organizer_name');
             $table->string('audio');
+            $table->string('description');
         });
     }
 

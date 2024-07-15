@@ -26,6 +26,7 @@ class StoreWeeklyServiceRequest extends FormRequest
             'day'                   =>          ['required', 'in:monday,tuesday,wednesday,thursday,friday,saturday,sunday'],
             'start_time'            =>          ['required', 'date_format:H:i'],
             'end_time'              =>          ['required', 'date_format:H:i'],
+            'image'                 =>          ['nullable', 'image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
         ];
     }
 }

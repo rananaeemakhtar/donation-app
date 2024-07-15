@@ -20,7 +20,7 @@
                 <div class="card-body">
 
                     <!-- Multi Columns Form -->
-                    <form class="row g-3 m-auto" action="{{ route('events.update', $event->id) }}" method="post">
+                    <form class="row g-3 m-auto" action="{{ route('events.update', $event->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <div class="col-sm-12 col-md-6">
@@ -83,6 +83,14 @@
                             <span class="text-danger">{{ $errors->first('website') }}</span>
                             @endif
                         </div>
+                        <div class="col-12">
+                            <label for="audio" class="form-label">Audio Recording</label>
+                            <input class="form-control" type="file" id="audio" name="audio">
+                        </div>
+                        <div class="col-12">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea name="description" class="form-control" id="description" cols="30" rows="10">{{ old('description', $event->description) }}</textarea>
+                            </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary">Update</button>
                             <button type="reset" class="btn btn-secondary">Reset</button>

@@ -14,5 +14,6 @@ class WeeklyService extends Model
         'day',
         'start_time',
         'end_time',
+        'image'
     ];
 }

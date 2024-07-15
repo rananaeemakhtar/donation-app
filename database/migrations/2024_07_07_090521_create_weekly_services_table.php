@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('weekly_services', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('image');
             $table->enum('day', ['monday', 'tuesday', 'wednesday', 'thursday', 'friday','saturday','sunday']);
             $table->time('start_time');
             $table->time('end_time');

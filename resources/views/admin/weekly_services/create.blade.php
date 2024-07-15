@@ -22,7 +22,7 @@
                     <div class="card-body">
 
                         <!-- Multi Columns Form -->
-                        <form class="row g-3 m-auto" action="{{ route('weekly_services.store') }}" method="post">
+                        <form class="row g-3 m-auto" action="{{ route('weekly_services.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="col-sm-12 col-md-6">
                                 <label for="inputName5" class="form-label">Title</label>
@@ -42,6 +42,14 @@
                             </div>
                             <div class="col-12">
                                 <div class="row">
+                                    <div class="col-sm-12 col-md-4 col-lg-4">
+                                        <label for="inputPassword5" class="form-label">Image</label>
+                                        <input type="file" class="form-control" id="inputPassword5" name="image"
+                                            value="{{ old('image') }}">
+                                        @if ($errors->has('image'))
+                                            <span class="text-danger">{{ $errors->first('image') }}</span>
+                                        @endif
+                                    </div>
                                     <div class="col-sm-12 col-md-4 col-lg-4">
                                         <label for="inputEmail5" class="form-label">Day</label>
                                         <select name="day" id="day" class="form-select">

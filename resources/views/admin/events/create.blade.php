@@ -96,6 +96,10 @@
                                 <label for="audio" class="form-label">Audio Recording</label>
                                 <input class="form-control" type="file" id="audio" name="audio">
                             </div>
+                            <div class="col-12">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea name="description" class="form-control" id="description" cols="30" rows="10">{{ old('description') }}</textarea>
+                            </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Save</button>
                                 <button type="reset" class="btn btn-secondary">Reset</button>

@@ -31,6 +31,7 @@ class StoreEventRequest extends FormRequest
             'website' => ['required'],
             'organizer_name' => ['required'],
             'audio' => 'required|mimes:application/octet-stream,audio/mpeg,mpga,mp3,wav',
+            'description' => ['required'],
         ];
     }
 }

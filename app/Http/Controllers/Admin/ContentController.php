@@ -31,7 +31,7 @@ class ContentController extends Controller
         $data = [
             'section' => $request->section,
             'content' => $request->content,
-            'title' => 'nullable',
+            'title' => $request->title,
         ];
 
         $content = Content::where('section', $request->section)->first();
