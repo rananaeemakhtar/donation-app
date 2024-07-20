@@ -3,8 +3,8 @@
 @section('content')
     <div class="pagetitle">
         <div class="d-flex justify-content-between align-items-center">
-            <h1>Weekly Services</h1>
-            <a class="btn btn-primary m-4" href="{{ route('weekly_services.create') }}"> Create Service </a>
+            <h1>Announcements</h1>
+            <a class="btn btn-primary m-4" href="{{ route('weekly_services.create') }}"> Create Announcement </a>
         </div>
 
         <section class="section">
@@ -19,9 +19,7 @@
                                 <thead>
                                     <tr>
                                         <th> Title </th>
-                                        <th> Day </th>
-                                        <th data-type="time">Start Time</th>
-                                        <th data-type="time">End Time</th>
+                                        <th> Description </th>
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
@@ -29,9 +27,7 @@
                                     @foreach ($services as $service)
                                         <tr>
                                             <td>{{ $service->title }}</td>
-                                            <td>{{ $service->date }}</td>
-                                            <td>{{ $service->start_time }}</td>
-                                            <td>{{ $service->end_time }}</td>
+                                            <td>{{ $service->description }}</td>
                                             <td>
                                                 <a href="{{ route('weekly_services.edit', $service->id) }}"><i
                                                         class="fa fa-pencil cursor-pointer text-success"></i></a>

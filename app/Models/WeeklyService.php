@@ -11,9 +11,10 @@ class WeeklyService extends Model
 
     protected $fillable = [
         'title',
-        'day',
-        'start_time',
-        'end_time',
-        'image'
+        // 'day',
+        // 'start_time',
+        // 'end_time',
+        'image',
+        'description'
     ];
 }

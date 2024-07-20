@@ -23,10 +23,11 @@ class StoreWeeklyServiceRequest extends FormRequest
     {
         return [
             'title'                 =>          ['required','string','max:255'],
-            'day'                   =>          ['required', 'in:monday,tuesday,wednesday,thursday,friday,saturday,sunday'],
-            'start_time'            =>          ['required', 'date_format:H:i'],
-            'end_time'              =>          ['required', 'date_format:H:i'],
+            // 'day'                   =>          ['required', 'in:monday,tuesday,wednesday,thursday,friday,saturday,sunday'],
+            // 'start_time'            =>          ['required', 'date_format:H:i'],
+            // 'end_time'              =>          ['required', 'date_format:H:i'],
             'image'                 =>          ['nullable', 'image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+            'description'           => ['required'],
         ];
     }
 }

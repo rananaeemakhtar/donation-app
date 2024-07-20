@@ -52,7 +52,7 @@
         <div class="d-flex align-items-center justify-content-between">
             <a href="{{ route('admin.index') }}" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">NiceAdmin</span>
+                <!-- <span class="d-none d-lg-block">NiceAdmin</span> -->
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -85,7 +85,7 @@
                     <!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                        <li class="dropdown-header">
+                        <!-- <li class="dropdown-header">
                             <h6>Kevin Anderson</h6>
                             <span>Web Designer</span>
                         </li>
@@ -121,14 +121,19 @@
                         </li>
                         <li>
                             <hr class="dropdown-divider">
-                        </li>
+                        </li> -->
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </li>
+
 
                     </ul><!-- End Profile Dropdown Items -->
                 </li><!-- End Profile Nav -->
@@ -157,10 +162,16 @@
                 </a>
             </li>
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('weekly_services.index') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Weekly Services</span>
+                </a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('weekly_services.index') }}">
+                    <i class="bi bi-card-list"></i>
+                    <span>Announcements</span>
                 </a>
             </li>
 
@@ -205,6 +216,19 @@
     <!-- Template Main JS File -->
     <script src="{{ url('frontend/js/main.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-confirmation2@4.1.0/dist/bootstrap-confirmation.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoutLink = document.querySelector('a[href="#"]');
+
+            if (logoutLink) {
+                logoutLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    document.getElementById('logout-form').submit();
+                });
+            }
+        });
+    </script>
 
 </body>
 

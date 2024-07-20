@@ -11,7 +11,7 @@
                 </ul>
             </div>
         @endif
-        <h1>Create Events</h1>
+        <h1>Create Announcement</h1>
     </div><!-- End Page Title -->
 
     <section class="section">
@@ -32,25 +32,30 @@
                                     <span class="text-danger">{{ $errors->first('title') }}</span>
                                 @endif
                             </div>
-                            <div class="col-sm-12 col-md-6">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <label for="inputPassword5" class="form-label">Image</label>
+                                <input type="file" class="form-control" id="inputPassword5" name="image"
+                                    value="{{ old('image') }}">
+                                @if ($errors->has('image'))
+                                    <span class="text-danger">{{ $errors->first('image') }}</span>
+                                @endif
+                            </div>
+                            <div class="col-12">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea name="description" class="form-control" id="description" cols="30" rows="10">{{ old('description') }}</textarea>
+                            </div>
+                            <!-- <div class="col-sm-12 col-md-6">
                                 <label for="inputZip" class="form-label">Organizer Name</label>
                                 <input type="text" class="form-control" id="inputZip" name="organizer_name"
                                     value="{{ old('organizer_name') }}">
                                 @if ($errors->has('organizer_name'))
                                     <span class="text-danger">{{ $errors->first('organizer_name') }}</span>
                                 @endif
-                            </div>
+                            </div> -->
                             <div class="col-12">
                                 <div class="row">
-                                    <div class="col-sm-12 col-md-4 col-lg-4">
-                                        <label for="inputPassword5" class="form-label">Image</label>
-                                        <input type="file" class="form-control" id="inputPassword5" name="image"
-                                            value="{{ old('image') }}">
-                                        @if ($errors->has('image'))
-                                            <span class="text-danger">{{ $errors->first('image') }}</span>
-                                        @endif
-                                    </div>
-                                    <div class="col-sm-12 col-md-4 col-lg-4">
+                                    
+                                    <!-- <div class="col-sm-12 col-md-4 col-lg-4">
                                         <label for="inputEmail5" class="form-label">Day</label>
                                         <select name="day" id="day" class="form-select">
                                             <option value="monday">Monday</option>
@@ -79,7 +84,7 @@
                                         @if ($errors->has('end_time'))
                                             <span class="text-danger">{{ $errors->first('end_time') }}</span>
                                         @endif
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="text-center">

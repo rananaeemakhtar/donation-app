@@ -27,6 +27,7 @@ class StoreEventRequest extends FormRequest
             'start_time' => ['required'],
             'end_time' => ['required'],
             'zoom_id' => ['required'],
+            'zoom_link' => ['required'],
             'phone_number' => ['required'],
             'website' => ['required'],
             'organizer_name' => ['required'],

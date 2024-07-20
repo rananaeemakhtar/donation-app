@@ -84,6 +84,14 @@
                                     <span class="text-danger">{{ $errors->first('phone_number') }}</span>
                                 @endif
                             </div>
+                            <div class="col-sm-12 col-md-12">
+                                <label for="inputAddress2" class="form-label">Zoom Link</label>
+                                <input type="text" class="form-control" id="inputAddress2" placeholder=""
+                                    name="zoom_link" value="{{ old('zoom_link') }}">
+                                @if ($errors->has('zoom_link'))
+                                    <span class="text-danger">{{ $errors->first('zoom_link') }}</span>
+                                @endif
+                            </div>
                             <div class="col-md-12">
                                 <label for="inputState" class="form-label">Website</label>
                                 <input type="website" class="form-control" id="inputCity" name="website"

@@ -16,6 +16,7 @@ class Event extends Model
         'start_time',
         'end_time',
         'zoom_id',
+        'zoom_link',
         'phone_number',
         'website',
         'organizer_name',

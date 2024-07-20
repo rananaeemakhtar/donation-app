@@ -27,9 +27,10 @@ class EventConroller extends Controller
                 $validated = $request->validated();
 
                 $fileName = time() . '.' . $request->audio->getClientOriginalExtension();
-                $path = 'public/audio.';
+                $path = 'public/audio';
 
                 // Store the uploaded audio file (replace with actual S3 logic later)
+
                 $path = $request->audio->storeAs($path, $fileName);
                 $validated['audio'] = str_replace('public', 'storage', $path);
 
@@ -56,6 +57,7 @@ class EventConroller extends Controller
                         'start_time' => ['required'],
                         'end_time' => ['required'],
                         'zoom_ID' => ['required'],
+                        'zoom_link' => ['required'],
                         'phone_no' => ['required'],
                         'website' => ['required'],
                         'organizer_name' => ['required'],
