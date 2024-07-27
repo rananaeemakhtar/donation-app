@@ -4,7 +4,9 @@
     <div class="pagetitle">
         <div class="d-flex justify-content-between align-items-center">
             <h1>Content Entries</h1>
-            <a class="btn btn-primary m-4" href="{{ route('content.create') }}"> Create Content Entry </a>
+            @if(count($entries) === 0)
+                <a class="btn btn-primary m-4" href="{{ route('content.create') }}"> Create Content Entry </a>
+            @endif
         </div>
 
         <section class="section">

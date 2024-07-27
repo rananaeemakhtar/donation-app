@@ -178,7 +178,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('content.index') }}">
                     <i class="bi bi-card-list"></i>
-                    <span>Content</span>
+                    <span>Word of the Week</span>
                 </a>
             </li>
 

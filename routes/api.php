@@ -17,3 +17,4 @@ Route::get('/services', [WeeklyServiceController::class, 'index'])->name('servic
 Route::get('/content', [ContentController::class, 'index'])->name('content.index');
 
 Route::post('/contacts', [ContactController::class,'store'])->name('contacts.store');
+Route::post('/welcome-card-submission', [ContactController::class, 'contactCard'])->name('contacts.card.store');
