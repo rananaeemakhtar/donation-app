@@ -22,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         [
+            Event::listen(\App\Events\WelcomeCardEntryCreated::class, \App\Listeners\WelcomeCardEntryEmail::class),
             Event::listen(\App\Events\ContactEntryCreated::class, \App\Listeners\ContactEntryEmail::class),
         ];
     }
