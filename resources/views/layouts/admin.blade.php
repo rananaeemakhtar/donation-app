@@ -162,12 +162,12 @@
                 </a>
             </li>
 
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('weekly_services.index') }}">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('audio-library.index') }}">
                     <i class="bi bi-card-list"></i>
-                    <span>Weekly Services</span>
+                    <span>Audio Library</span>
                 </a>
-            </li> -->
+            </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('weekly_services.index') }}">
                     <i class="bi bi-card-list"></i>

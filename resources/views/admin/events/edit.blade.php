@@ -93,7 +93,7 @@
                         </div>
                         <div class="col-12">
                             <label for="audio" class="form-label">Audio Recording</label>
-                            <input class="form-control" type="file" id="audio" name="audio">
+                            <input class="form-control" type="file" id="audio" name="audio" accept="audio/*" value="{{ old('audio', $event->audio) }}">
                         </div>
                         <div class="col-12">
                                 <label for="description" class="form-label">Description</label>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AudioLibraryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
@@ -49,5 +50,13 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', AdminMiddleware:
     Route::get('/content/{content}/edit', [ContentController::class, 'edit'])->name('content.edit');
     Route::put('/content/{content}', [ContentController::class, 'update'])->name('content.update');
     Route::get('/content/{content}/delete', [ContentController::class, 'delete'])->name('content.delete');
+
+    Route::get('/audio-library', [AudioLibraryController::class, 'index'])->name('audio-library.index');
+    Route::get('/audio-library/create', [AudioLibraryController::class, 'create'])->name('audio-library.create');
+    Route::post('/audio-library', [AudioLibraryController::class,'store'])->name('audio-library.store');
+    Route::get('/audio-library/{audioLibrary}/edit', [AudioLibraryController::class, 'edit'])->name('audio-library.edit');
+    Route::post('/audio-library/{audioLibrary}', [AudioLibraryController::class, 'update'])->name('audio-library.update');
+    Route::get('/audio-library/{audioLibrary}', [AudioLibraryController::class, 'show'])->name('audio-library.show');
+    Route::get('/audio-library/{audioLibrary}/delete', [AudioLibraryController::class, 'destroy'])->name('audio-library.delete');
 });
 

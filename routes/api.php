@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AudioLibraryController;
 use App\Http\Controllers\Api\WeeklyServiceConroller;
 use App\Http\Controllers\Api\ContentController;
 use App\Http\Controllers\Api\EventController;
@@ -18,3 +19,5 @@ Route::get('/content', [ContentController::class, 'index'])->name('content.index
 
 Route::post('/contacts', [ContactController::class,'store'])->name('contacts.store');
 Route::post('/welcome-card-submission', [ContactController::class, 'contactCard'])->name('contacts.card.store');
+
+Route::get('/audio-library', [AudioLibraryController::class, 'index'])->name('audio-library.index');
