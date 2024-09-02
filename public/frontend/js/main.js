@@ -281,26 +281,29 @@
   /**
    * Initiate Datatables
    */
-  const datatables = select('.datatable', true)
-  datatables.forEach(datatable => {
-    new simpleDatatables.DataTable(datatable, {
-      perPageSelect: [5, 10, 15, ["All", -1]],
-      columns: [{
-          select: 2,
-          sortSequence: ["desc", "asc"]
-        },
-        {
-          select: 3,
-          sortSequence: ["desc"]
-        },
-        {
-          select: 4,
-          cellClass: "green",
-          headerClass: "red"
-        }
-      ]
+  document.addEventListener('DOMContentLoaded', function() {
+    const datatables = select('.datatable', true); // Select all tables with class .datatable
+    datatables.forEach(datatable => {
+      new simpleDatatables.DataTable(datatable, {
+        perPageSelect: [5, 10, 15, ["All", -1]], // Common configuration for all tables
+        // columns: [{
+        //     select: 2,
+        //     sortSequence: ["desc", "asc"]
+        //   },
+        //   {
+        //     select: 3,
+        //     sortSequence: ["desc"]
+        //   },
+        //   {
+        //     select: 4,
+        //     cellClass: "green",
+        //     headerClass: "red"
+        //   }
+        // ]
+      });
     });
-  })
+  });
+  
 
   /**
    * Autoresize echart charts

@@ -35,7 +35,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', AdminMiddleware:
     Route::post('/store', [EventConroller::class, 'store'])->name('events.store');
     Route::get('/events/{event}', [EventConroller::class, 'edit'])->name('events.edit');
     Route::put('/events/{event}', [EventConroller::class, 'update'])->name('events.update');
-    Route::delete('/events/{event}', [EventConroller::class, 'delete'])->name('events.delete');
+    Route::get('/deleteevent/{event}', [EventConroller::class, 'delete'])->name('events.delete');
 
     Route::get('/weekly-services', [WeeklyServiceConroller::class, 'index'])->name('weekly_services.index');
     Route::get('/weekly-services/create', [WeeklyServiceConroller::class, 'create'])->name('weekly_services.create');

@@ -84,9 +84,8 @@ class EventConroller extends Controller
                 return redirect()->route('events.index');
         }
 
-        public function delete_events(Event $event)
+        public function delete(Event $event)
         {
-
                 $event->delete();
 
                 return redirect()->back();
