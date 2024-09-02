@@ -21,6 +21,7 @@
                                         <th> Title </th>
                                         <th> Description </th>
                                         <th> Recording Date </th>
+                                        <th> Updated Date </th>
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
@@ -30,6 +31,7 @@
                                             <td>{{ $audioLibrary->title }}</td>
                                             <td>{{ $audioLibrary->description }}</td>
                                             <td>{{ $audioLibrary->date_of_recording }}</td>
+                                            <td>{{ $audioLibrary->updated_at }}</td>
                                             <td>
                                                 <a href="{{ route('audio-library.edit', $audioLibrary->id) }}"><i
                                                         class="fa fa-pencil cursor-pointer text-success"></i></a>
