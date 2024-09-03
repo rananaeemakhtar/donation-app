@@ -25,7 +25,9 @@ class AudioLibraryController extends Controller
         })
         ->when(!$start_date && $end_date, function($q) use ($start_date, $end_date) {
             $q->where('date_of_recording', '<=', $end_date);
-        })->get();
+        })
+        ->paginate(3);
+        // ->get();
 
         return response()->json([
             'success' => true,
