@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class WeeklyService extends Model
 {
@@ -17,4 +18,9 @@ class WeeklyService extends Model
         'image',
         'description'
     ];
+
+    public function getImageAttribute($value)
+    {
+        return Storage::disk(env('FILESYSTEM_DISK'))->path($value);
+    }
 }

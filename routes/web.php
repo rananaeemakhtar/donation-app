@@ -29,7 +29,7 @@ require __DIR__.'/auth.php';
 //admin related routes
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
-    
+
     Route::get('/events', [EventConroller::class, 'index'])->name('events.index');
     Route::get('/events/create', [EventConroller::class, 'create'])->name('events.create');
     Route::post('/store', [EventConroller::class, 'store'])->name('events.store');
@@ -42,7 +42,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', AdminMiddleware:
     Route::post('/weekly-services', [WeeklyServiceConroller::class,'store'])->name('weekly_services.store');
     Route::get('/weekly-services/{service}/edit', [WeeklyServiceConroller::class, 'edit'])->name('weekly_services.edit');
     Route::put('/weekly-services/{service}', [WeeklyServiceConroller::class, 'update'])->name('weekly_services.update');
-    Route::delete('/weekly-services/{service}', [WeeklyServiceConroller::class, 'delete'])->name('weekly_services.delete');
+    Route::get('/weekly-services/{service}/delete', [WeeklyServiceConroller::class, 'delete'])->name('weekly_services.delete');
 
     Route::get('/content', [ContentController::class, 'index'])->name('content.index');
     Route::get('/content/create', [ContentController::class, 'create'])->name('content.create');

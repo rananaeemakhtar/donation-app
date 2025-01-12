@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreWeeklyServiceRequest;
 use App\Models\WeeklyService;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 
 class WeeklyServiceConroller extends Controller
 {
@@ -24,12 +24,12 @@ class WeeklyServiceConroller extends Controller
     public function store(StoreWeeklyServiceRequest $request)
     {
         $data = $request->validated();
-
         if($request->hasFile('image')) {
-            $path = $request->image->store('public/images');
-            $data['image'] = str_replace('public', 'storage', $path);
+            $imagename = time() . '.' . $request->image->extension();
+
+            $data['image'] = $request->image->storeAs('images', $imagename, 'public');
         }
-        
+
         WeeklyService::create($data);
 
         return redirect(route('weekly_services.index'))->with('message', 'Service created successfully');
@@ -50,10 +50,11 @@ class WeeklyServiceConroller extends Controller
         $data = $request->validated();
 
         if($request->hasFile('image')) {
-            $path = $request->image->store('public/images');
-            $data['image'] = str_replace('public', 'storage', $path);
+            $imagename = time() . '.' . $request->image->extension();
+
+            $data['image'] = $request->image->storeAs('images', $imagename, 'public');
         }
-        
+
         $service->update($data);
 
         return redirect(route('weekly_services.index'))->with('message', 'Service updated successfully');

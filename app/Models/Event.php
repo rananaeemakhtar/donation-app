@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\Storage;
 
 class Event extends Model
 {
@@ -23,4 +24,9 @@ class Event extends Model
         'audio',
         'description'
     ];
+
+    public function getAudioAttribute($value)
+    {
+        return Storage::disk(env('FILESYSTEM_DISK'))->url($value);
+    }
 }
