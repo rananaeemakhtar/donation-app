@@ -18,8 +18,8 @@ class AudioLibrary extends Model
     ];
 
 
-    public function getAudioAttribute($value)
-    {
-        return Storage::disk(env('FILESYSTEM_DISK'))->url($value);
-    }
+    // public function getAudioAttribute($value)
+    // {
+    //     return Storage::disk(env('FILESYSTEM_DISK'))->url($value);
+    // }
 }

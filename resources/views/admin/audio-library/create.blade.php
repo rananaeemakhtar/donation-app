@@ -46,8 +46,8 @@
                                 @endif
                             </div>
                             <div class="col-12">
-                                <label for="audio" class="form-label">Audio Recording</label>
-                                <input class="form-control" type="file" id="audio" name="audio" accept="audio/*" value="{{ old('audio') }}" />
+                                <label for="audio" class="form-label">Audio Link</label>
+                                <input class="form-control" type="text" id="audio" name="audio" value="{{ old('audio') }}" />
                                 @if ($errors->has('audio'))
                                     <span class="text-danger">{{ $errors->first('audio') }}</span>
                                 @endif

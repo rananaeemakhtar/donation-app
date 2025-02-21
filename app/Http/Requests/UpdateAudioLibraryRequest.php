@@ -22,10 +22,14 @@ class UpdateAudioLibraryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' =>'required|string|max:255',
-            'description' =>'required|string|max:255',
-            'date_of_recording' =>'required|date',
-            'audio' => 'required|mimes:application/octet-stream,audio/mpeg,mpga,mp3,wav',
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'date_of_recording' => 'required|date',
+            'audio' => [
+                'required',
+                'url',
+                'regex:/^(https?:\/\/)?(www\.)?(youtube\.com\/(watch\?v=|shorts\/)|youtu\.be\/)[a-zA-Z0-9_-]+$/i'
+            ],
         ];
     }
 }

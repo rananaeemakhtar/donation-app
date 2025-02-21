@@ -36,11 +36,11 @@ class AudioLibraryController extends Controller
 
         $data = $request->validated();
 
-        $fileName = time() . '.' . $request->audio->getClientOriginalExtension();
-        $path = 'library';
+        // $fileName = time() . '.' . $request->audio->getClientOriginalExtension();
+        // $path = 'library';
 
-        $path = $request->audio->storeAs($path, $fileName, 'public');
-        $data['audio'] = $path;
+        // $path = $request->audio->storeAs($path, $fileName, 'public');
+        // $data['audio'] = $path;
         AudioLibrary::create($data);
 
         return redirect()->route('audio-library.index')->with('success', 'Audio Library entry created successfully.');
@@ -69,13 +69,13 @@ class AudioLibraryController extends Controller
     {
         $data = $request->validated();
 
-        if($request->hasFile('audio')) {
-            $fileName = time() . '.' . $request->audio->getClientOriginalExtension();
-            $path = 'library';
+        // if($request->hasFile('audio')) {
+        //     $fileName = time() . '.' . $request->audio->getClientOriginalExtension();
+        //     $path = 'library';
 
-            $path = $request->audio->storeAs($path, $fileName, 'public');
-            $data['audio'] = $path;
-        }
+        //     $path = $request->audio->storeAs($path, $fileName, 'public');
+        //     $data['audio'] = $path;
+        // }
 
         $audioLibrary->update($data);
 
