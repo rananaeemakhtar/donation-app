@@ -7,6 +7,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EventConroller;
 use App\Http\Controllers\Admin\WeeklyServiceConroller;
 use App\Http\Controllers\Admin\ContentController;
+use App\Http\Controllers\Admin\MinistriesController;
+use App\Http\Controllers\Admin\TestimonialsController;
 
 use App\Http\Middleware\AdminMiddleware;
 
@@ -58,5 +60,19 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', AdminMiddleware:
     Route::post('/audio-library/{audioLibrary}', [AudioLibraryController::class, 'update'])->name('audio-library.update');
     Route::get('/audio-library/{audioLibrary}', [AudioLibraryController::class, 'show'])->name('audio-library.show');
     Route::get('/audio-library/{audioLibrary}/delete', [AudioLibraryController::class, 'destroy'])->name('audio-library.delete');
+
+    Route::get('/ministries', [MinistriesController::class, 'index'])->name('ministries.index');
+    Route::get('/ministry/create', [MinistriesController::class, 'create'])->name('ministry.create');
+    Route::post('/ministry', [MinistriesController::class,'store'])->name('ministry.store');
+    Route::get('/ministry/{ministry}/edit', [MinistriesController::class, 'edit'])->name('ministry.edit');
+    Route::put('/ministry/{ministry}', [MinistriesController::class, 'update'])->name('ministry.update');
+    Route::get('/ministry/{ministry}/delete', [MinistriesController::class, 'delete'])->name('ministry.delete');
+    
+    Route::get('/testimonials', [TestimonialsController::class, 'index'])->name('testimonials.index');
+    Route::get('/testimonial/create', [TestimonialsController::class, 'create'])->name('testimonial.create');
+    Route::post('/testimonial', [TestimonialsController::class,'store'])->name('testimonial.store');
+    Route::get('/testimonial/{testimonial}/edit', [TestimonialsController::class, 'edit'])->name('testimonial.edit');
+    Route::put('/testimonial/{testimonial}', [TestimonialsController::class, 'update'])->name('testimonial.update');
+    Route::get('/testimonial/{testimonial}/delete', [TestimonialsController::class, 'delete'])->name('testimonial.delete');
 });
 

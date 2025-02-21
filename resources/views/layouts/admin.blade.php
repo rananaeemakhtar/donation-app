@@ -182,6 +182,20 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('ministries.index') }}">
+                    <i class="bi bi-card-list"></i>
+                    <span>Ministries</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('testimonials.index') }}">
+                    <i class="bi bi-card-list"></i>
+                    <span>Testimonials</span>
+                </a>
+            </li>
+
         </ul>
 
     </aside><!-- End Sidebar-->
