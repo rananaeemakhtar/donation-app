@@ -189,12 +189,12 @@
                 </a>
             </li>
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('testimonials.index') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Testimonials</span>
                 </a>
-            </li>
+            </li> -->
 
         </ul>
 
