@@ -19,8 +19,8 @@ class WeeklyService extends Model
         'description'
     ];
 
-    public function getImageAttribute($value)
-    {
-        return Storage::disk(env('FILESYSTEM_DISK'))->path($value);
-    }
+    // public function getImageAttribute($value)
+    // {
+    //     return Storage::disk(env('FILESYSTEM_DISK'))->path($value);
+    // }
 }
