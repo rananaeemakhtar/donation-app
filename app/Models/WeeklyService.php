@@ -23,4 +23,9 @@ class WeeklyService extends Model
     // {
     //     return Storage::disk(env('FILESYSTEM_DISK'))->path($value);
     // }
+
+    public function getImageAttribute($value)
+    {
+        return asset('storage/' . $value);
+    }
 }
