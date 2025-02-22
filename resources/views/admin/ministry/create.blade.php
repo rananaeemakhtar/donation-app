@@ -1,6 +1,10 @@
 @extends('layouts.admin')
-
 @section('content')
+    <style>
+        .cke_notification_warning {
+            display: none;
+        }
+    </style>
     <div class="pagetitle">
         @if ($errors->any())
             <div class="alert alert-danger">
