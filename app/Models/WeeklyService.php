@@ -26,6 +26,6 @@ class WeeklyService extends Model
 
     public function getImageAttribute($value)
     {
-        return asset('storage/' . $value);
+        return 'storage/' . $value;
     }
 }
