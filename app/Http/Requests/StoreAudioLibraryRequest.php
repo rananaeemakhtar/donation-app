@@ -23,7 +23,7 @@ class StoreAudioLibraryRequest extends FormRequest
     {
         return [
             'title' =>'required|string|max:255',
-            'description' =>'required|string|max:255',
+            'description' =>'required|string',
             'date_of_recording' =>'required|date',
             // 'audio' => 'required|mimes:application/octet-stream,audio/mpeg,mpga,mp3,wav',
             'audio' => [
