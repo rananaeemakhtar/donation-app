@@ -56,11 +56,11 @@ class EventConroller extends Controller
                         'end_time' => ['required'],
                         'zoom_ID' => ['required'],
                         'zoom_link' => ['required'],
-                        'phone_no' => ['required'],
-                        'website' => ['required'],
-                        'organizer_name' => ['required'],
+                        // 'phone_no' => ['required'],
+                        // 'website' => ['required'],
+                        // 'organizer_name' => ['required'],
                         'audio' => 'mimes:application/octet-stream,audio/mpeg,mpga,mp3,wav',
-                        'description' => ['required'],
+                        // 'description' => ['required'],
                 ]);
 
                 $data = $request->all();

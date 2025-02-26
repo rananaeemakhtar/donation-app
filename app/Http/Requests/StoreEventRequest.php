@@ -28,11 +28,11 @@ class StoreEventRequest extends FormRequest
             'end_time' => ['required'],
             'zoom_id' => ['required'],
             'zoom_link' => ['required'],
-            'phone_number' => ['required'],
-            'website' => ['required'],
-            'organizer_name' => ['required'],
-            'audio' => 'required|mimes:application/octet-stream,audio/mpeg,mpga,mp3,wav',
-            'description' => ['required'],
+            // 'phone_number' => ['required'],
+            // 'website' => ['required'],
+            // 'organizer_name' => ['required'],
+            // 'audio' => 'required|mimes:application/octet-stream,audio/mpeg,mpga,mp3,wav',
+            // 'description' => ['required'],
         ];
     }
 }

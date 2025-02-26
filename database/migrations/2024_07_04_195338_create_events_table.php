@@ -19,11 +19,11 @@ return new class extends Migration
             $table->time('start_time');
             $table->time('end_time');
             $table->string('zoom_id');
-            $table->string('phone_number');
-            $table->string('website');
-            $table->string('organizer_name');
-            $table->string('audio');
-            $table->string('description');
+            $table->string('phone_number')->nullable();
+            $table->string('website')->nullable();
+            $table->string('organizer_name')->nullable();
+            $table->string('audio')->nullable();
+            $table->string('description')->nullable();
         });
     }
 
