@@ -61,15 +61,6 @@
                 </div>
             </div>
         </section>
-        <td>
-            <a href="{{ route('events.edit', $event->id) }}">
-                <i class="fa fa-pencil cursor-pointer text-success"></i>
-            </a>
-            |
-            <a href="javascript:void(0);" onclick="confirmDelete({{ $event->id }})">
-                <i class="fa fa-trash cursor-pointer text-danger"></i>
-            </a>
-        </td>
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
