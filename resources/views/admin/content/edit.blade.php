@@ -10,7 +10,7 @@
             </ul>
         </div>
     @endif
-    <h1>Update Content</h1>
+    <h1>Update Word of the week</h1>
 </div><!-- End Page Title -->
 <section class="section">
     <div class="row">

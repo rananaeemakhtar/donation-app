@@ -3,7 +3,7 @@
 @section('content')
     <div class="pagetitle">
         <div class="d-flex justify-content-between align-items-center">
-            <h1>Content Entries</h1>
+            <h1>Word of the week Entries</h1>
             @if(count($entries) === 0)
                 <a class="btn btn-primary m-4" href="{{ route('content.create') }}"> Create Content Entry </a>
             @endif

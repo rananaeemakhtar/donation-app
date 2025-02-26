@@ -3,7 +3,7 @@
 @section('content')
     <div class="pagetitle">
         <div class="d-flex justify-content-between align-items-center">
-            <h1>Events</h1>
+            <h1>Ministries</h1>
             <a class="btn btn-primary m-4" href="{{ route('ministry.create') }}"> Create Ministry </a>
         </div>
 

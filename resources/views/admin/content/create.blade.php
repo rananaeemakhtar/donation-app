@@ -11,7 +11,7 @@
                 </ul>
             </div>
         @endif
-        <h1>Create Content Entry</h1>
+        <h1>Create Word of the week</h1>
     </div><!-- End Page Title -->
 
     <section class="section">

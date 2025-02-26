@@ -15,7 +15,7 @@
                 </ul>
             </div>
         @endif
-        <h1>Create Ministries</h1>
+        <h1>Create Ministry</h1>
     </div><!-- End Page Title -->
 
     <section class="section">

@@ -10,7 +10,7 @@
             </ul>
         </div>
     @endif
-    <h1>Update Events</h1>
+    <h1>Update Announcement</h1>
 </div><!-- End Page Title -->
 <section class="section">
     <div class="row">
