@@ -42,6 +42,7 @@ class WeeklyServiceConroller extends Controller
 
     public function edit(WeeklyService $service)
     {
+        // dd($service);
         return view('admin.weekly_services.edit', compact('service'));
     }
 

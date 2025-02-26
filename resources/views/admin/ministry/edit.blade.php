@@ -49,7 +49,8 @@
                                 @if($testimonials->isNotEmpty())
                                     @foreach ($testimonials as $index => $testimonial)
                                         <div class="card mt-4 testimonial-item">
-                                        <input type="hidden" name="testimonials[{{ $index }}][id]" value="{{ $testimonial->id }}">
+                                            <input type="hidden" name="testimonials[{{ $index }}][id]"
+                                                value="{{ $testimonial->id }}">
                                             <div class="card-body">
                                                 <h5 class="card-title">Testimonial</h5>
                                                 <div class="row g-3">
@@ -57,18 +58,24 @@
                                                         <label class="form-label">Name</label>
                                                         <input type="text" class="form-control"
                                                             name="testimonials[{{ $index }}][name]"
-                                                            value="{{ old("testimonials.$index.name", $testimonial->name) }}" required>
+                                                            value="{{ old("testimonials.$index.name", $testimonial->name) }}"
+                                                            required>
                                                     </div>
                                                     <div class="col-sm-12 col-md-6">
                                                         <label class="form-label">Designation</label>
                                                         <input type="text" class="form-control"
                                                             name="testimonials[{{ $index }}][designation]"
-                                                            value="{{ old("testimonials.$index.designation", $testimonial->designation) }}" required>
+                                                            value="{{ old("testimonials.$index.designation", $testimonial->designation) }}"
+                                                            required>
                                                     </div>
                                                     <div class="col-sm-12 col-md-6">
                                                         <label class="form-label">Image</label>
                                                         <input type="file" class="form-control"
                                                             name="testimonials[{{ $index }}][image]">
+
+                                                        <small id="imageName-{{ $index }}" class="form-text text-muted">
+                                                            {{ $testimonial->image ? 'Current file: ' . $testimonial->image : 'No file selected' }}
+                                                        </small>
                                                     </div>
                                                     <div class="col-12">
                                                         <label class="form-label">Description</label>
@@ -119,32 +126,32 @@
             // Add new testimonial dynamically
             $('#add-testimonial-btn').on('click', function () {
                 let testimonialHtml = `
-                        <div class="card mt-4 testimonial-item">
-                            <div class="card-body">
-                                <h5 class="card-title">Testimonial</h5>
-                                <div class="row g-3">
-                                    <div class="col-sm-12 col-md-6">
-                                        <label class="form-label">Name</label>
-                                        <input type="text" class="form-control" name="testimonials[${testimonialIndex}][name]" required>
+                                <div class="card mt-4 testimonial-item">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Testimonial</h5>
+                                        <div class="row g-3">
+                                            <div class="col-sm-12 col-md-6">
+                                                <label class="form-label">Name</label>
+                                                <input type="text" class="form-control" name="testimonials[${testimonialIndex}][name]" required>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6">
+                                                <label class="form-label">Designation</label>
+                                                <input type="text" class="form-control" name="testimonials[${testimonialIndex}][designation]" required>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6">
+                                                <label class="form-label">Image</label>
+                                                <input type="file" class="form-control" name="testimonials[${testimonialIndex}][image]">
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">Description</label>
+                                                <textarea name="testimonials[${testimonialIndex}][description]" class="form-control testimonial-description" cols="30" rows="3"></textarea>
+                                            </div>
+                                            <div class="text-end">
+                                                <button type="button" class="btn btn-danger remove-testimonial">Remove</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-12 col-md-6">
-                                        <label class="form-label">Designation</label>
-                                        <input type="text" class="form-control" name="testimonials[${testimonialIndex}][designation]" required>
-                                    </div>
-                                    <div class="col-sm-12 col-md-6">
-                                        <label class="form-label">Image</label>
-                                        <input type="file" class="form-control" name="testimonials[${testimonialIndex}][image]">
-                                    </div>
-                                    <div class="col-12">
-                                        <label class="form-label">Description</label>
-                                        <textarea name="testimonials[${testimonialIndex}][description]" class="form-control testimonial-description" cols="30" rows="3"></textarea>
-                                    </div>
-                                    <div class="text-end">
-                                        <button type="button" class="btn btn-danger remove-testimonial">Remove</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>`;
+                                </div>`;
 
                 $('#testimonials-container').append(testimonialHtml);
                 CKEDITOR.replace(`testimonials[${testimonialIndex}][description]`);
@@ -156,5 +163,11 @@
                 $(this).closest('.testimonial-item').remove();
             });
         });
+    </script>
+    <script>
+        function updateFileName(input, index) {
+            let fileName = input.files.length > 0 ? input.files[0].name : 'No file selected';
+            document.getElementById("imageName-" + index).textContent = 'Selected file: ' + fileName;
+        }
     </script>
 @endsection
