@@ -26,7 +26,7 @@ Route::get('/', function () {
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 //admin related routes
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', AdminMiddleware::class]], function () {
@@ -41,36 +41,36 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', AdminMiddleware:
 
     Route::get('/weekly-services', [WeeklyServiceConroller::class, 'index'])->name('weekly_services.index');
     Route::get('/weekly-services/create', [WeeklyServiceConroller::class, 'create'])->name('weekly_services.create');
-    Route::post('/weekly-services', [WeeklyServiceConroller::class,'store'])->name('weekly_services.store');
+    Route::post('/weekly-services', [WeeklyServiceConroller::class, 'store'])->name('weekly_services.store');
     Route::get('/weekly-services/{service}/edit', [WeeklyServiceConroller::class, 'edit'])->name('weekly_services.edit');
     Route::put('/weekly-services/{service}', [WeeklyServiceConroller::class, 'update'])->name('weekly_services.update');
     Route::get('/weekly-services/{service}/delete', [WeeklyServiceConroller::class, 'delete'])->name('weekly_services.delete');
 
     Route::get('/content', [ContentController::class, 'index'])->name('content.index');
     Route::get('/content/create', [ContentController::class, 'create'])->name('content.create');
-    Route::post('/content', [ContentController::class,'store'])->name('content.store');
+    Route::post('/content', [ContentController::class, 'store'])->name('content.store');
     Route::get('/content/{content}/edit', [ContentController::class, 'edit'])->name('content.edit');
     Route::put('/content/{content}', [ContentController::class, 'update'])->name('content.update');
     Route::get('/content/{content}/delete', [ContentController::class, 'delete'])->name('content.delete');
 
     Route::get('/audio-library', [AudioLibraryController::class, 'index'])->name('audio-library.index');
     Route::get('/audio-library/create', [AudioLibraryController::class, 'create'])->name('audio-library.create');
-    Route::post('/audio-library', [AudioLibraryController::class,'store'])->name('audio-library.store');
+    Route::post('/audio-library', [AudioLibraryController::class, 'store'])->name('audio-library.store');
     Route::get('/audio-library/{audioLibrary}/edit', [AudioLibraryController::class, 'edit'])->name('audio-library.edit');
     Route::post('/audio-library/{audioLibrary}', [AudioLibraryController::class, 'update'])->name('audio-library.update');
-    Route::get('/audio-library/{audioLibrary}', [AudioLibraryController::class, 'show'])->name('audio-library.show');
     Route::get('/audio-library/{audioLibrary}/delete', [AudioLibraryController::class, 'destroy'])->name('audio-library.delete');
+    Route::get('/audio-library/{audioLibrary}', [AudioLibraryController::class, 'show'])->name('audio-library.show');
 
     Route::get('/ministries', [MinistriesController::class, 'index'])->name('ministries.index');
     Route::get('/ministry/create', [MinistriesController::class, 'create'])->name('ministry.create');
-    Route::post('/ministry', [MinistriesController::class,'store'])->name('ministry.store');
+    Route::post('/ministry', [MinistriesController::class, 'store'])->name('ministry.store');
     Route::get('/ministry/{ministry}/edit', [MinistriesController::class, 'edit'])->name('ministry.edit');
     Route::put('/ministry/{ministry}', [MinistriesController::class, 'update'])->name('ministry.update');
     Route::get('/ministry/{ministry}/delete', [MinistriesController::class, 'delete'])->name('ministry.delete');
-    
+
     Route::get('/testimonials', [TestimonialsController::class, 'index'])->name('testimonials.index');
     Route::get('/testimonial/create', [TestimonialsController::class, 'create'])->name('testimonial.create');
-    Route::post('/testimonial', [TestimonialsController::class,'store'])->name('testimonial.store');
+    Route::post('/testimonial', [TestimonialsController::class, 'store'])->name('testimonial.store');
     Route::get('/testimonial/{testimonial}/edit', [TestimonialsController::class, 'edit'])->name('testimonial.edit');
     Route::put('/testimonial/{testimonial}', [TestimonialsController::class, 'update'])->name('testimonial.update');
     Route::get('/testimonial/{testimonial}/delete', [TestimonialsController::class, 'delete'])->name('testimonial.delete');

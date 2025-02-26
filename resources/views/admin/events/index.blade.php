@@ -44,8 +44,11 @@
                                                 <a href="{{ route('events.edit', $event->id) }}"><i
                                                         class="fa fa-pencil cursor-pointer text-success"></i></a>
                                                 |
-                                                <a href="{{ route('events.delete', $event->id) }}"><i
-                                                        class="fa fa-trash cursor-pointer text-danger"></i></a>
+                                                <!-- <a href="{{ route('events.delete', $event->id) }}"><i
+                                                                        class="fa fa-trash cursor-pointer text-danger"></i></a> -->
+                                                <a href="javascript:void(0);" onclick="confirmDelete({{ $event->id }})">
+                                                    <i class="fa fa-trash cursor-pointer text-danger"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -58,4 +61,33 @@
                 </div>
             </div>
         </section>
-    @endsection
+        <td>
+            <a href="{{ route('events.edit', $event->id) }}">
+                <i class="fa fa-pencil cursor-pointer text-success"></i>
+            </a>
+            |
+            <a href="javascript:void(0);" onclick="confirmDelete({{ $event->id }})">
+                <i class="fa fa-trash cursor-pointer text-danger"></i>
+            </a>
+        </td>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            function confirmDelete(eventId) {
+                Swal.fire({
+                    title: "You won't be able to revert this!",
+                    text: "Are you sure you want to delete or remove?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#d33",
+                    cancelButtonColor: "#3085d6",
+                    confirmButtonText: "Yes, delete it!",
+                    cancelButtonText: "No, cancel"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "{{ route('events.delete', '') }}/" + eventId;
+                    }
+                });
+            }
+        </script>
+@endsection
