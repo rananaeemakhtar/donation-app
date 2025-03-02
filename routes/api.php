@@ -15,6 +15,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
+Route::get('/calendar_events', [EventController::class, 'calendar_events'])->name('events.calendar_events');
 Route::get('/services', [WeeklyServiceController::class, 'index'])->name('services.index');
 Route::get('/content', [ContentController::class, 'index'])->name('content.index');
 

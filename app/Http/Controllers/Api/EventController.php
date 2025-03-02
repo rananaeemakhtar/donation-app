@@ -34,4 +34,14 @@ class EventController extends Controller
             'events' => $events
         ]);
     }
+
+    public function calendar_events(Request $request)
+    {
+        $events = Event::get();
+
+        return response()->json([
+            'success' => true,
+            'events' => $events
+        ]);
+    }
 }
