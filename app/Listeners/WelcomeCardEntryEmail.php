@@ -27,6 +27,6 @@ class WelcomeCardEntryEmail
 
         Log::info("Sending welcome card entry email to: ". $data['email']);
     
-        Mail::to("rana786naeem@gmail.com")->send(new WelcomeCardEntry($data));
+        Mail::to(env('ADMIN_EMAIL'))->send(new WelcomeCardEntry($data));
     }
 }

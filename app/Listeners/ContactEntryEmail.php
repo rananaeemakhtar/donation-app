@@ -24,6 +24,6 @@ class ContactEntryEmail
     {
         $data = $event->data;
     
-        Mail::to($data->email)->send(new ContactEntry($data));
+        Mail::to(env('ADMIN_EMAIL'))->send(new ContactEntry($data));
     }
 }
