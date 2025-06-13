@@ -4,6 +4,17 @@
         .cke_notification_warning {
             display: none;
         }
+
+        .img-thumbnail {
+            object-fit: cover;
+            height: 150px;
+        }
+
+        .delete-image {
+            border-radius: 50%;
+            padding: 0 8px;
+            line-height: 1;
+        }
     </style>
     <div class="pagetitle">
         @if ($errors->any())
@@ -37,6 +48,26 @@
                                     <span class="text-danger">{{ $errors->first('title') }}</span>
                                 @endif
                             </div>
+                            <div class="col-sm-12 col-md-6 mb-3">
+                                <label for="images" class="form-label">Add New Images</label>
+                                <input type="file" class="form-control mb-3" id="images" name="images[]" multiple>
+                                @if ($errors->has('images'))
+                                    <span class="text-danger">{{ $errors->first('images') }}</span>
+                                @endif
+
+                                <div class="d-flex flex-wrap gap-2">
+                                    @foreach ($ministry->images as $image)
+                                        <div class="position-relative" style="width: 100px; height: 100px;">
+                                            <img src="{{ asset($image->file_path) }}"
+                                                class="img-thumbnail w-100 h-100 object-fit-cover">
+                                            <button type="button"
+                                                class="btn btn-danger btn-sm position-absolute top-0 end-0 m-1 delete-image"
+                                                data-id="{{ $image->id }}" title="Delete">&times;</button>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
                             <div class="col-12">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea name="description" class="form-control" id="description" cols="30"
@@ -126,32 +157,32 @@
             // Add new testimonial dynamically
             $('#add-testimonial-btn').on('click', function () {
                 let testimonialHtml = `
-                                <div class="card mt-4 testimonial-item">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Testimonial</h5>
-                                        <div class="row g-3">
-                                            <div class="col-sm-12 col-md-6">
-                                                <label class="form-label">Name</label>
-                                                <input type="text" class="form-control" name="testimonials[${testimonialIndex}][name]" required>
-                                            </div>
-                                            <div class="col-sm-12 col-md-6">
-                                                <label class="form-label">Designation</label>
-                                                <input type="text" class="form-control" name="testimonials[${testimonialIndex}][designation]" required>
-                                            </div>
-                                            <div class="col-sm-12 col-md-6">
-                                                <label class="form-label">Image</label>
-                                                <input type="file" class="form-control" name="testimonials[${testimonialIndex}][image]">
-                                            </div>
-                                            <div class="col-12">
-                                                <label class="form-label">Description</label>
-                                                <textarea name="testimonials[${testimonialIndex}][description]" class="form-control testimonial-description" cols="30" rows="3"></textarea>
-                                            </div>
-                                            <div class="text-end">
-                                                <button type="button" class="btn btn-danger remove-testimonial">Remove</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>`;
+                                                    <div class="card mt-4 testimonial-item">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Testimonial</h5>
+                                                            <div class="row g-3">
+                                                                <div class="col-sm-12 col-md-6">
+                                                                    <label class="form-label">Name</label>
+                                                                    <input type="text" class="form-control" name="testimonials[${testimonialIndex}][name]" required>
+                                                                </div>
+                                                                <div class="col-sm-12 col-md-6">
+                                                                    <label class="form-label">Designation</label>
+                                                                    <input type="text" class="form-control" name="testimonials[${testimonialIndex}][designation]" required>
+                                                                </div>
+                                                                <div class="col-sm-12 col-md-6">
+                                                                    <label class="form-label">Image</label>
+                                                                    <input type="file" class="form-control" name="testimonials[${testimonialIndex}][image]">
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <label class="form-label">Description</label>
+                                                                    <textarea name="testimonials[${testimonialIndex}][description]" class="form-control testimonial-description" cols="30" rows="3"></textarea>
+                                                                </div>
+                                                                <div class="text-end">
+                                                                    <button type="button" class="btn btn-danger remove-testimonial">Remove</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>`;
 
                 $('#testimonials-container').append(testimonialHtml);
                 CKEDITOR.replace(`testimonials[${testimonialIndex}][description]`);
@@ -170,4 +201,31 @@
             document.getElementById("imageName-" + index).textContent = 'Selected file: ' + fileName;
         }
     </script>
+    <script>
+        $(document).ready(function () {
+            $('.delete-image').click(function () {
+                var button = $(this);
+                var imageId = button.data('id');
+
+                if (confirm('Are you sure you want to delete this image?')) {
+                    $.ajax({
+                        url: '{{ route('images.destroy', ':id') }}'.replace(':id', imageId),
+                        type: 'POST',
+                        data: {
+                            _method: 'DELETE',
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function (response) {
+                            // Remove image box on success
+                            button.closest('.position-relative').remove();
+                        },
+                        error: function (xhr) {
+                            alert('Failed to delete image.');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
 @endsection

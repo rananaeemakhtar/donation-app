@@ -20,7 +20,8 @@ class MinistriesController extends Controller
 
     public function ministries_by_url($url)
     {
-        $ministries = Ministry::with('ministry_testimonial')->where('url',$url)->first();
+        $ministries = Ministry::with('ministry_testimonial', 'images')
+            ->where('url', $url)->first();
 
         // dd($ministries);
         return response()->json([

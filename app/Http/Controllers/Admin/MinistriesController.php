@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Image;
 use App\Models\Ministry;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
@@ -29,6 +30,9 @@ class MinistriesController extends Controller
             $request->all(),
             [
                 'title' => 'required',
+                'description' => 'nullable|string',
+                'images' => 'nullable|array',
+                'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'testimonials' => 'nullable|array',
                 'testimonials.*.name' => 'required|string|max:255',
                 'testimonials.*.designation' => 'required|string|max:255',
@@ -47,6 +51,17 @@ class MinistriesController extends Controller
         $ministry->description = $request->description;
 
         if ($ministry->save()) {
+            // ✅ Save Ministry Images
+            if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $image) {
+                    $imageName = time() . '_' . uniqid() . '.' . $image->extension();
+                    $path = $image->storeAs('images/ministry', $imageName, 'public');
+
+                    $ministry->images()->create([
+                        'file_path' => 'storage/' . $path
+                    ]);
+                }
+            }
 
             // **Check if testimonials exist**
             if (!empty($request->testimonials)) {
@@ -90,6 +105,9 @@ class MinistriesController extends Controller
             $request->all(),
             [
                 'title' => 'required',
+                'description' => 'nullable|string',
+                'images' => 'nullable|array',
+                'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'testimonials' => 'nullable|array',
                 'testimonials.*.id' => 'nullable|exists:testimonials,id',
                 'testimonials.*.name' => 'required|string|max:255',
@@ -108,6 +126,18 @@ class MinistriesController extends Controller
         $ministry->url = Str::slug($request->title, '_');
         $ministry->description = $request->description;
         $ministry->save();
+
+        // ✅ Save Ministry Images
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $imageName = time() . '_' . uniqid() . '.' . $image->extension();
+                $path = $image->storeAs('images/ministry', $imageName, 'public');
+
+                $ministry->images()->create([
+                    'file_path' => 'storage/' . $path
+                ]);
+            }
+        }
 
         // Track testimonial IDs from request
         $existingTestimonialIds = [];
@@ -155,8 +185,30 @@ class MinistriesController extends Controller
         // Delete related testimonials
         $ministry->ministry_testimonial()->delete();
 
+        // ✅ Delete related images (and unlink files)
+        foreach ($ministry->images as $image) {
+            // Delete file from storage
+            if (\Storage::disk('public')->exists(str_replace('storage/', '', $image->file_path))) {
+                \Storage::disk('public')->delete(str_replace('storage/', '', $image->file_path));
+            }
+            // Delete image record
+            $image->delete();
+        }
+
         // Delete the ministry
         $ministry->delete();
         return redirect()->route('ministries.index')->with('success', 'Ministry deleted successfully.');
+    }
+
+    public function destroy_image(Image $image)
+    {
+        // Delete file from storage if needed
+        if (\Storage::disk('public')->exists(str_replace('storage/', '', $image->file_path))) {
+            \Storage::disk('public')->delete(str_replace('storage/', '', $image->file_path));
+        }
+
+        $image->delete();
+
+        return response()->json(['success' => true]);
     }
 }

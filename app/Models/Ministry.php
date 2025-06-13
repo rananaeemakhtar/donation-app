@@ -15,4 +15,10 @@ class Ministry extends Model
     {
         return $this->hasMany(Testimonial::class, 'ministry_id');
     }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
+
 }

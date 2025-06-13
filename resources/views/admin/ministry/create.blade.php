@@ -36,6 +36,13 @@
                                     <span class="text-danger">{{ $errors->first('title') }}</span>
                                 @endif
                             </div>
+                            <div class="col-sm-12 col-md-6">
+                                <label for="title" class="form-label">Images</label>
+                                <input type="file" class="form-control" id="images" name="images[]" multiple>
+                                @if ($errors->has('images'))
+                                    <span class="text-danger">{{ $errors->first('images') }}</span>
+                                @endif
+                            </div>
                             <div class="col-12">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea name="description" class="form-control" id="description" cols="30"

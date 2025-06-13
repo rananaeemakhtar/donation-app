@@ -67,6 +67,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', AdminMiddleware:
     Route::get('/ministry/{ministry}/edit', [MinistriesController::class, 'edit'])->name('ministry.edit');
     Route::put('/ministry/{ministry}', [MinistriesController::class, 'update'])->name('ministry.update');
     Route::get('/ministry/{ministry}/delete', [MinistriesController::class, 'delete'])->name('ministry.delete');
+    Route::delete('/images/{image}', [MinistriesController::class, 'destroy_image'])->name('images.destroy');
 
     Route::get('/testimonials', [TestimonialsController::class, 'index'])->name('testimonials.index');
     Route::get('/testimonial/create', [TestimonialsController::class, 'create'])->name('testimonial.create');
