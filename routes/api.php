@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AudioLibraryController;
+use App\Http\Controllers\Api\ServiceScheduleController;
 use App\Http\Controllers\Api\WeeklyServiceConroller;
 use App\Http\Controllers\Api\ContentController;
 use App\Http\Controllers\Api\EventController;
@@ -25,3 +26,4 @@ Route::post('/welcome-card-submission', [ContactController::class, 'contactCard'
 Route::get('/audio-library', [AudioLibraryController::class, 'index'])->name('audio-library.index');
 Route::get('/ministries', [MinistriesController::class, 'index'])->name('ministries.index');
 Route::get('/ministries_by_url/{url}', [MinistriesController::class, 'ministries_by_url'])->name('ministries_by_url.index');
+Route::get('/service-schedules', [ServiceScheduleController::class, 'index'])->name('service-schedules.index');
