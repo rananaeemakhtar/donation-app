@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AudioLibraryController;
+use App\Http\Controllers\Admin\ServiceScheduleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
@@ -75,5 +76,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', AdminMiddleware:
     Route::get('/testimonial/{testimonial}/edit', [TestimonialsController::class, 'edit'])->name('testimonial.edit');
     Route::put('/testimonial/{testimonial}', [TestimonialsController::class, 'update'])->name('testimonial.update');
     Route::get('/testimonial/{testimonial}/delete', [TestimonialsController::class, 'delete'])->name('testimonial.delete');
+
+    Route::resource('schedule_services', ServiceScheduleController::class);
 });
 

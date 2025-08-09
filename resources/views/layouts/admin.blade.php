@@ -157,35 +157,42 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('events.index') }}">
-                    <i class="bi bi-card-list"></i>
+                    <i class="bi bi-calendar-event"></i>
                     <span>Events</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('audio-library.index') }}">
-                    <i class="bi bi-card-list"></i>
+                    <i class="bi bi-music-note-list"></i>
                     <span>Audio Library</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('weekly_services.index') }}">
-                    <i class="bi bi-card-list"></i>
+                    <i class="bi bi-megaphone"></i>
                     <span>Announcements</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('content.index') }}">
-                    <i class="bi bi-card-list"></i>
+                    <i class="bi bi-book"></i>
                     <span>Word of the Week</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('ministries.index') }}">
-                    <i class="bi bi-card-list"></i>
+                    <i class="bi bi-people"></i>
                     <span>Ministries</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('schedule_services.index') }}">
+                    <i class="bi bi-building"></i>
+                    <span>Services</span>
                 </a>
             </li>
 
